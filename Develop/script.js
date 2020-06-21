@@ -106,12 +106,11 @@ function generatePassword() {
     magicPassword += randomLoop;
   }
 
-  magicPassword += minNumbers;
+ 
   magicPassword += minLowCase;
   magicPassword += minUpCase;
-  magicPassword += minSpc;
-
-  // var magicPassword = Math.random().toString(36).slice(-8);
+  magicPassword += minNumbers;
+  magicPassword += minSpc; 
 
   //Presto Passwordo!
   console.log(magicPassword);
