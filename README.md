@@ -11,6 +11,7 @@ An evolving application desgined to provide unique passwords for users.
 ## Website
 https://akutozo.github.io/magic-password/
 
-## Contribution
-Jacob M. Daughtry 
+## Contributions
+Primary Author: Jacob M. Daughtry
 
+Study Group Idea Sharing: Blake Gale, Melanie Gillman
