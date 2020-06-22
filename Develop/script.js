@@ -50,7 +50,7 @@ function generatePassword() {
     }
 
   var lowCase = confirm("Do you require lower case letters?");
-  if (upCase === true){
+  if (lowCase === true){
       console.log("+ Selected lower case letters for password combination.")
 	  var lowcaseChar = "abcdefghijklmnopqrstuvwxyz";
     }else{
@@ -73,7 +73,7 @@ function generatePassword() {
       console.log("- Special characters not selected for password combination.")
     }
 
-  if (spc === false && upCase === false && upCase === false && numbers === false){
+  if (spc === false && lowCase === false && upCase === false && numbers === false){
     window.alert("You answered No to all criteria. Please try again.");
   }
 	
