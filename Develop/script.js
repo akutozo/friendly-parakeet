@@ -1,5 +1,5 @@
 // Special characters
-const specialChar = "!$%#";
+const specialChar = "!@#$%^&*()-_=+";
 const generateButton = document.getElementById('generate')
 generateButton.addEventListener('click', writePassword);
 
@@ -98,6 +98,7 @@ function generatePassword() {
     }
 
   var magicPassword = "";
+  
 
   //Let's start looping everyone in.
   for (let i = 0; i < (userlength - baseline); i++) {
@@ -110,7 +111,8 @@ function generatePassword() {
   magicPassword += minLowCase;
   magicPassword += minUpCase;
   magicPassword += minNumbers;
-  magicPassword += minSpc; 
+  magicPassword += minSpc;
+  
 
   //Presto Passwordo!
   console.log(magicPassword);
