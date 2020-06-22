@@ -1,5 +1,3 @@
-// Special characters
-const specialChar = "!@#$%^&*()-_=+";
 const generateButton = document.getElementById('generate')
 generateButton.addEventListener('click', writePassword);
 
@@ -16,34 +14,7 @@ function generatePassword() {
 
   //Baseline the character count
   var baseline = 0;
-
-  // Establishing chosen characters
-
-  var minNumbers = "";
-  var minLowCase = "";
-  var minUpCase = "";
-  var minSpc = "";
-
-  // We're going to pull random characters using fromCharCode, except special characters.
-  // We will use an array for special characters.
-  var functionList = {
-    getNumbers: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-    },
-
-    getLowCase: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-    },
-
-    getUpCase: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-    },
-
-    getSpc: function() {
-      return specialChar[Math.floor(Math.random() * specialChar.length)]
-    }
-  }
-
+  
   //We're going to force the user to input more than the number 8, or less than the number 128.
   //We're going to console log each choice to ensure characters are represented accurately.
 
@@ -54,63 +25,70 @@ function generatePassword() {
     console.log("User input less than 8. Redirect to password prompt.");
     window.alert("You have entered an invalid length. Please try again");
     return generatePassword();                                               ;
-  }
-  if (userlength > 128 ) {
+  }  else if (userlength > 128 ) {
     console.log("User input less than 128. Redirect to password prompt.");
     window.alert("You have entered an invalid length. Please try again");
     return generatePassword();                                               ;
-  }
+  } else if (userlength === "" || isNaN(userlength)) {
+    console.log("Your input was invalid. Please try again.");
+    window.alert("Input was invalid. Please try again");
+    return generatePassword();                                               ;
+  } 
+
+  var numChar= "";
+  var lowcaseChar= "";
+  var upcaseChar= "";
+  var specialChar= "";
+  var passChar= "";
 
   var numbers = confirm("Are numbers required?");
   if (numbers === true){
       console.log("+ Selected numbers for password combination.")
-      minNumbers = functionList.getNumbers();
-      baseline++;
+	  var numChar= "0123456789";
     }else{
       console.log("- Numbers not selected for password combination.")
-      }
+    }
 
   var lowCase = confirm("Do you require lower case letters?");
-  if (lowCase === true){
-    console.log("+ Selected lower case letters for password combination.")
-    minLowCase = functionList.getLowCase();
-    baseline++;
+  if (upCase === true){
+      console.log("+ Selected lower case letters for password combination.")
+	  var lowcaseChar = "abcdefghijklmnopqrstuvwxyz";
     }else{
-    console.log("- Lower case letters not selected for password combination.")
-      }
+      console.log("- Lower case letters not selected for password combination.")
+    }
       
   var upCase = confirm("Do you require upper case letters?");
   if (upCase === true){
-    console.log("+ Selected upper case letters for password combination.")
-    minUpCase = functionList.getUpCase();
-    baseline++;
+      console.log("+ Selected upper case letters for password combination.")
+	  var upcaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }else{
-    console.log("- Lower case letters not selected for password combination.")
-      }
+      console.log("- Lower case letters not selected for password combination.")
+    }
 
   var spc = confirm("Are special characters required?");
   if (spc === true){
-    console.log("+ Selected special characters for password combination.")
-    minSpc = functionList.getSpc();
-    baseline++;
+      console.log("+ Selected special characters for password combination.")
+	  var specialChar = "!@#$%^&*()";
     }else{
-    console.log("- Special characters not selected for password combination.")
+      console.log("- Special characters not selected for password combination.")
     }
 
-  var magicPassword = "";
-  
-  //Let's start looping everyone in.
-  for (let i = 0; i < (userlength - baseline); i++) {
-    var randomLoop = Math.floor(Math.random() * 10);
-
-    magicPassword += randomLoop;
+  if (spc === false && upCase === false && upCase === false && numbers === false){
+    window.alert("You answered No to all criteria. Please try again.");
   }
-
-  magicPassword += minLowCase;
-  magicPassword += minUpCase;
-  magicPassword += minNumbers;
-  magicPassword += minSpc;
+	
+  passChar += numChar;
+  passChar += lowcaseChar;
+  passChar += upcaseChar;
+  passChar += specialChar;
   
+  var magicPassword = "";
+
+  //Let's generate and mix it up.
+  var randPassword = Array(userlength).fill(passChar).map(function(x) { return x[Math.floor(Math.random() * x.length)] }).join('');
+
+    magicPassword += randPassword;
+
   //Presto Passwordo!
   console.log(magicPassword);
   return magicPassword;  
