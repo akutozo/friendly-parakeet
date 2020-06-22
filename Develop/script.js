@@ -90,7 +90,7 @@ function generatePassword() {
     magicPassword += randPassword;
 
   //Presto Passwordo!
-  console.log(magicPassword);
+  console.log("Custom password result: " + magicPassword);
   return magicPassword;  
 
 }
