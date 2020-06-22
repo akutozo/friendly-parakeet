@@ -26,7 +26,7 @@ function generatePassword() {
 
   // We're going to pull random characters using fromCharCode, except special characters.
   // We will use an array for special characters.
-  var functionArray = {
+  var functionList = {
     getNumbers: function() {
       return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
     },
@@ -64,7 +64,7 @@ function generatePassword() {
   var numbers = confirm("Are numbers required?");
   if (numbers === true){
       console.log("+ Selected numbers for password combination.")
-      minNumbers = functionArray.getNumbers();
+      minNumbers = functionList.getNumbers();
       baseline++;
     }else{
       console.log("- Numbers not selected for password combination.")
@@ -73,7 +73,7 @@ function generatePassword() {
   var lowCase = confirm("Do you require lower case letters?");
   if (lowCase === true){
     console.log("+ Selected lower case letters for password combination.")
-    minLowCase = functionArray.getLowCase();
+    minLowCase = functionList.getLowCase();
     baseline++;
     }else{
     console.log("- Lower case letters not selected for password combination.")
@@ -82,7 +82,7 @@ function generatePassword() {
   var upCase = confirm("Do you require upper case letters?");
   if (upCase === true){
     console.log("+ Selected upper case letters for password combination.")
-    minUpCase = functionArray.getUpCase();
+    minUpCase = functionList.getUpCase();
     baseline++;
     }else{
     console.log("- Lower case letters not selected for password combination.")
@@ -91,7 +91,7 @@ function generatePassword() {
   var spc = confirm("Are special characters required?");
   if (spc === true){
     console.log("+ Selected special characters for password combination.")
-    minSpc = functionArray.getSpc();
+    minSpc = functionList.getSpc();
     baseline++;
     }else{
     console.log("- Special characters not selected for password combination.")
